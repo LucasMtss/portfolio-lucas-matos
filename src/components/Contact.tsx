@@ -63,7 +63,6 @@ export function Contact() {
               label="LinkedIn"
               icon={LinkedinIcon}
             />
-            <SocialLink href={site.social.vercel} label="Vercel" icon={Triangle} />
             <SocialLink
               href={site.social.whatsapp}
               label="WhatsApp"
