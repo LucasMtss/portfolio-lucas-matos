@@ -14,7 +14,7 @@ export const site = {
     github: 'https://github.com/LucasMtss',
     linkedin: 'https://www.linkedin.com/in/lucas-matos-92b37a1b2/',
     vercel: 'https://curriculo-lucas-matos-fifa.vercel.app/',
-    whatsapp: 'https://api.whatsapp.com/send?phone=5532984809791&text=Ol%C3%A1!',
+    whatsapp: 'https://api.whatsapp.com/send?phone=5532991864842&text=Ol%C3%A1!',
   },
   stats: {
     publicRepos: 84,
