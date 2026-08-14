@@ -2,7 +2,9 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ExternalLink, X } from 'lucide-react'
 import { useEffect } from 'react'
 import type { Project } from '../data/projects'
+import { previewSources } from '../lib/preview'
 import { GithubIcon } from './icons'
+import { PreviewImage } from './PreviewImage'
 
 type ProjectModalProps = {
   project: Project | null
@@ -53,10 +55,15 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-line">
-              <img
-                src={project.image}
+              <PreviewImage
+                sources={previewSources({
+                  image: project.image,
+                  liveUrl: project.links.live,
+                  githubUrl: project.links.github,
+                })}
                 alt={`Preview de ${project.title}`}
-                className="h-full w-full object-cover"
+                fallbackLabel={project.title}
+                className="h-full w-full object-cover object-top"
               />
               <button
                 type="button"

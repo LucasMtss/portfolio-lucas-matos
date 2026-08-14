@@ -1,7 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type { Project } from '../data/projects'
+import { previewSources } from '../lib/preview'
 import { GithubIcon } from './icons'
+import { PreviewImage } from './PreviewImage'
 
 type ProjectCardProps = {
   project: Project
@@ -32,11 +34,15 @@ export function ProjectCard({ project, index, onOpen }: ProjectCardProps) {
         aria-label={`Abrir detalhes de ${project.title}`}
       >
         <div className="relative aspect-[16/11] overflow-hidden bg-line">
-          <img
-            src={project.image}
+          <PreviewImage
+            sources={previewSources({
+              image: project.image,
+              liveUrl: project.links.live,
+              githubUrl: project.links.github,
+            })}
             alt={`Preview de ${project.title}`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            fallbackLabel={project.title}
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
           <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">

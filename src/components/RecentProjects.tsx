@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react'
 import {
   fetchRecentRepos,
   formatRepoDate,
-  repoPreviewImage,
+  repoPreviewSources,
   type GithubRepo,
 } from '../lib/github'
 import { site } from '../data/site'
 import { GithubIcon } from './icons'
+import { PreviewImage } from './PreviewImage'
 import { Reveal } from './Reveal'
 
 export function RecentProjects() {
@@ -143,11 +144,11 @@ function RepoCard({ repo }: { repo: GithubRepo }) {
         className="cursor-pointer"
       >
         <div className="relative aspect-[16/10] overflow-hidden bg-line">
-          <img
-            src={repoPreviewImage(repo)}
+          <PreviewImage
+            sources={repoPreviewSources(repo)}
             alt={`Preview do repositório ${repo.name}`}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            fallbackLabel={repo.name.replaceAll('_', ' ')}
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         </div>
         <div className="px-4 pt-4 md:px-5">

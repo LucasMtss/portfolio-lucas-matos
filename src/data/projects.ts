@@ -1,3 +1,5 @@
+import { githubOgImage, siteScreenshot } from '../lib/preview'
+
 export type ProjectSource = 'github' | 'vercel' | 'both'
 
 export type Project = {
@@ -24,7 +26,7 @@ export const projects: Project[] = [
       'Aplicação que cria lembretes e envia mensagens sobre eventos marcados via WhatsApp.',
     longDescription:
       'Projeto open-source em Python com 23 stars no GitHub. Automatiza o envio de lembretes por WhatsApp para eventos agendados.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/Lembretes_por_whatsapp',
+    image: githubOgImage('LucasMtss/Lembretes_por_whatsapp'),
     tags: ['Python', 'WhatsApp', 'Automação'],
     source: 'github',
     year: '2026',
@@ -38,7 +40,7 @@ export const projects: Project[] = [
     description: 'Sistema criado para a academia Sparta Cross, para gerenciar os treinos de crossfit.',
     longDescription:
       'Projeto front-end em React para site da academia Sparta Cross.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/sparta-cross',
+    image: siteScreenshot('https://sparta-cross.vercel.app/'),
     tags: ['React'],
     source: 'vercel',
     year: '2025',
@@ -52,7 +54,7 @@ export const projects: Project[] = [
     description: 'Cardápio digital com pedidos pelo whatsapp.',
     longDescription:
       'Projeto front-end em TypeScript para cardápio digital com pedidos pelo whatsapp.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/zupy-delivery',
+    image: siteScreenshot('https://www.zupydelivery.com.br/'),
     tags: ['TypeScript', 'React', 'WhatsApp'],
     source: 'vercel',
     year: '2025',
@@ -66,7 +68,7 @@ export const projects: Project[] = [
     description: 'Site para a sanduicheria Artesano.',
     longDescription:
       'Projeto front-end em React para site da sanduicheria Artesano.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/zupy-delivery',
+    image: siteScreenshot('https://artesano.zupydelivery.com.br/'),
     tags: ['React', 'WhatsApp'],
     source: 'vercel',
     year: '2025',
@@ -80,7 +82,7 @@ export const projects: Project[] = [
     description: 'Planejador de viagens com IA.',
     longDescription:
       'Projeto front-end em React para planejador de viagens com IA, onde o usuário pode planejar suas viagens com base em suas preferências e informações sobre o local.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/planejador-de-viagens',
+    image: siteScreenshot('https://planejador-de-viagens-mu.vercel.app/'),
     tags: ['React', 'IA'],
     source: 'vercel',
     year: '2025',
@@ -94,7 +96,7 @@ export const projects: Project[] = [
     description: 'Jogo baseado em Bets e Cartola FC, com apostas fictícias, ligas entre amigos e jogos de campeonatos reais.',
     longDescription:
       'Projeto front-end em React para jogo baseado em Bets e Cartola FC, com apostas fictícias, ligas entre amigos e jogos de campeonatos reais.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/planejador-de-viagens',
+    image: siteScreenshot('https://fantasy-bet-theta.vercel.app/'),
     tags: ['React', 'IA'],
     source: 'vercel',
     year: '2025',
@@ -108,7 +110,7 @@ export const projects: Project[] = [
     description: 'Sistema de dízimo online para igrejas.',
     longDescription:
       'Projeto front-end em React para sistema de dízimo online para igrejas.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/dizipay',
+    image: siteScreenshot('https://www.dizipay.com.br/'),
     tags: ['React', 'Node', 'PostgreSQL', 'Tailwind CSS'],
     source: 'vercel',
     year: '2026',
@@ -122,7 +124,7 @@ export const projects: Project[] = [
     description: 'Chat IA para responder dúvidas do ECC.',
     longDescription:
       'Projeto front-end em React para chat IA para responder dúvidas do ECC.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/dizipay',
+    image: siteScreenshot('https://duvidas-ecc.vercel.app/'),
     tags: ['React', 'PostgreSQL', 'Tailwind CSS', 'IA'],
     source: 'vercel',
     year: '2026',
@@ -136,7 +138,7 @@ export const projects: Project[] = [
     description: 'Site para a empresa de registro de marcas e patentes Pachelli Soluções.',
     longDescription:
       'Projeto front-end em React para site da empresa de registro de marcas e patentes Pachelli Soluções.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/pachelli-solucoes',
+    image: siteScreenshot('https://www.pachellisolucoes.com.br/'),
     tags: ['React', 'Tailwind CSS'],
     source: 'vercel',
     year: '2026',
@@ -150,7 +152,7 @@ export const projects: Project[] = [
     description: 'Site para a venda de fornecedores de camisas tailandesas.',
     longDescription:
       'Projeto front-end em React para site da venda de fornecedores de camisas tailandesas.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/fornecedor-tailandesas',
+    image: siteScreenshot('https://www.fornecedorviptailandesas.com.br/'),
     tags: ['React', 'Tailwind CSS'],
     source: 'vercel',
     year: '2026',
@@ -164,7 +166,7 @@ export const projects: Project[] = [
     description: 'Sistema de pagamentos por recorrência para empresas e pessoas físicas.',
     longDescription:
       'Projeto front-end em React para sistema de pagamentos por recorrência para empresas e pessoas físicas.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/recurser-pay',
+    image: siteScreenshot('https://recurser-pay.vercel.app/'),
     tags: ['React', 'Tailwind CSS', 'Node', 'PostgreSQL'],
     source: 'vercel',
     year: '2026',
@@ -178,7 +180,7 @@ export const projects: Project[] = [
     description: 'Criador de playlists no Spotify, onde o usuário pode criar playlists com base em suas preferências e informações sobre o local.',
     longDescription:
       'Projeto front-end em React para criador de playlists no Spotify, onde o usuário pode criar playlists com base em suas preferências e informações sobre o local.',
-    image: 'https://opengraph.githubassets.com/1/LucasMtss/recurser-pay',
+    image: siteScreenshot('https://spotify-ai-playlist-generator-delta.vercel.app/'),
     tags: ['React', 'Tailwind CSS', 'Spotify API'],
     source: 'vercel',
     year: '2026',

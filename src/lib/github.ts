@@ -37,8 +37,17 @@ export async function fetchRecentRepos(limit = 6): Promise<GithubRepo[]> {
     .slice(0, limit)
 }
 
-export function repoPreviewImage(repo: GithubRepo) {
-  return `https://opengraph.githubassets.com/1/${repo.full_name}`
+export function repoPreviewSources(repo: GithubRepo) {
+  const sources: string[] = []
+  const homepage = repo.homepage?.trim()
+  if (homepage) {
+    const live = homepage.startsWith('http') ? homepage : `https://${homepage}`
+    sources.push(
+      `https://s.wordpress.com/mshots/v1/${encodeURIComponent(live)}?w=1280`,
+    )
+  }
+  sources.push(`https://opengraph.githubassets.com/1/${repo.full_name}`)
+  return sources
 }
 
 export function formatRepoDate(iso: string) {
