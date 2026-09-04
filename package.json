@@ -4,25 +4,46 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n client,server -c blue,green \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "vite",
+    "dev:server": "tsx watch server/index.ts",
     "build": "tsc -b && vite build",
+    "start": "cross-env NODE_ENV=production tsx server/index.ts",
+    "db:migrate": "tsx server/migrate.ts",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dompurify": "^3.2.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "framer-motion": "^13.1.0",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^1.31.0",
+    "marked": "^15.0.11",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.18",
+    "@types/dompurify": "^3.2.0",
+    "@types/express": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
     "oxlint": "^1.75.0",
     "tailwindcss": "^4.3.3",
+    "tsx": "^4.19.4",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
   }

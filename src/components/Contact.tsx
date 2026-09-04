@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MessageCircle, Triangle } from 'lucide-react'
+import { ArrowUpRight, Mail, MessageCircle } from 'lucide-react'
 import type { ComponentType, SVGProps } from 'react'
 import { site } from '../data/site'
 import { GithubIcon, LinkedinIcon } from './icons'

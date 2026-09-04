@@ -1,19 +1,22 @@
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { site } from '../data/site'
 
-const links = [
-  { href: '#recentes', label: 'Recentes' },
-  { href: '#projetos', label: 'Destaques' },
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#contato', label: 'Contato' },
+const homeLinks = [
+  { href: '/#recentes', label: 'Recentes' },
+  { href: '/#projetos', label: 'Destaques' },
+  { href: '/#sobre', label: 'Sobre' },
+  { href: '/#contato', label: 'Contato' },
 ]
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const reduced = useReducedMotion()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -29,37 +32,59 @@ export function Navbar() {
     }
   }, [open])
 
+  useEffect(() => {
+    setOpen(false)
+  }, [location.pathname])
+
+  const navLinks = [
+    ...homeLinks,
+    { href: '/blog', label: 'Blog', isRoute: true },
+  ]
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6 lg:px-8">
       <nav
         className={`pointer-events-auto mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-4 py-3 transition-colors duration-300 md:px-5 ${
-          scrolled || open
+          scrolled || open || !isHome
             ? 'border-line bg-surface-elevated/90 shadow-[0_8px_30px_rgba(9,9,11,0.06)] backdrop-blur-md'
             : 'border-transparent bg-transparent'
         }`}
         aria-label="Principal"
       >
-        <a
-          href="#topo"
+        <Link
+          to="/"
           className="font-heading text-lg font-semibold tracking-tight text-ink transition-colors duration-200 hover:text-accent"
         >
           {site.shortName}
-        </a>
+        </Link>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
+        <ul className="hidden items-center gap-6 md:flex lg:gap-8">
+          {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="font-body text-sm font-medium text-ink-muted transition-colors duration-200 hover:text-ink"
-              >
-                {link.label}
-              </a>
+              {'isRoute' in link && link.isRoute ? (
+                <Link
+                  to={link.href}
+                  className={`font-body text-sm font-medium transition-colors duration-200 ${
+                    location.pathname.startsWith('/blog')
+                      ? 'text-ink'
+                      : 'text-ink-muted hover:text-ink'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={link.href}
+                  className="font-body text-sm font-medium text-ink-muted transition-colors duration-200 hover:text-ink"
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
           <li>
             <a
-              href="#contato"
+              href={isHome ? '#contato' : '/#contato'}
               className="inline-flex cursor-pointer items-center rounded-full bg-ink px-4 py-2 text-sm font-medium text-surface transition-colors duration-200 hover:bg-accent"
             >
               Fale comigo
@@ -90,22 +115,29 @@ export function Navbar() {
             transition={{ duration: 0.25, ease: 'easeOut' }}
           >
             <ul className="flex flex-col gap-1 p-3">
-              {links.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="block cursor-pointer rounded-xl px-4 py-3 text-base font-medium text-ink transition-colors duration-200 hover:bg-accent-soft"
-                    onClick={() => setOpen(false)}
-                  >
-                    {link.label}
-                  </a>
+                  {'isRoute' in link && link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="block cursor-pointer rounded-xl px-4 py-3 text-base font-medium text-ink transition-colors duration-200 hover:bg-accent-soft"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="block cursor-pointer rounded-xl px-4 py-3 text-base font-medium text-ink transition-colors duration-200 hover:bg-accent-soft"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
               <li>
                 <a
-                  href="#contato"
+                  href={isHome ? '#contato' : '/#contato'}
                   className="mt-1 block cursor-pointer rounded-xl bg-ink px-4 py-3 text-center text-base font-medium text-surface transition-colors duration-200 hover:bg-accent"
-                  onClick={() => setOpen(false)}
                 >
                   Fale comigo
                 </a>

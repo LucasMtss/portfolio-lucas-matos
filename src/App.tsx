@@ -1,29 +1,31 @@
-import { About } from './components/About'
-import { Contact } from './components/Contact'
-import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
-import { Navbar } from './components/Navbar'
-import { Projects } from './components/Projects'
-import { RecentProjects } from './components/RecentProjects'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { MainLayout } from './layouts/MainLayout'
+import { AdminRoute } from './components/AdminRoute'
+import { HomePage } from './pages/HomePage'
+import { BlogPage } from './pages/BlogPage'
+import { BlogPostPage } from './pages/BlogPostPage'
+import { AdminLoginRoute } from './pages/admin/AdminLoginRoute'
+import { AdminDashboardPage } from './pages/admin/AdminDashboardPage'
+import { AdminEditorPage } from './pages/admin/AdminEditorPage'
 
 export default function App() {
   return (
-    <>
-      <a
-        href="#recentes"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
-      >
-        Pular para projetos
-      </a>
-      <Navbar />
-      <main>
-        <Hero />
-        <RecentProjects />
-        <Projects />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="blog/:slug" element={<BlogPostPage />} />
+        </Route>
+
+        <Route path="admin/login" element={<AdminLoginRoute />} />
+
+        <Route element={<AdminRoute />}>
+          <Route path="admin" element={<AdminDashboardPage />} />
+          <Route path="admin/posts/new" element={<AdminEditorPage />} />
+          <Route path="admin/posts/:id/edit" element={<AdminEditorPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
