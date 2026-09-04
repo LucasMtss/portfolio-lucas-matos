@@ -20,6 +20,21 @@ export type Project = {
 /** Projetos em destaque (curadoria manual — demos Vercel + repos fortes). */
 export const projects: Project[] = [
   {
+    id: 'site-contabilidade',
+    title: "Site Cont'Habilidade",
+    description:
+      'Site para um escritório de contabilidade.',
+    longDescription:
+      'Projeto front-end em React para site para um escritório de contabilidade.',
+    image: siteScreenshot('https://cont-habilidade-bq.vercel.app/'),
+    tags: ['React', 'Next.js', 'Tailwind CSS'],
+    source: 'vercel',
+    year: '2026',
+    links: {
+      live: 'https://cont-habilidade-bq.vercel.app/',
+    },
+  },
+  {
     id: 'lembretes-whatsapp',
     title: 'Lembretes por WhatsApp',
     description:
