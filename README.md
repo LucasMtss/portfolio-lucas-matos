@@ -56,11 +56,23 @@ Cada post suporta:
 | `npm run start` | API + serve `dist` (produção) |
 | `npm run db:migrate` | Cria tabela `blog_posts` no Neon |
 
-## Deploy
+## Deploy (Vercel)
 
-1. Configure as variáveis no host (Vercel, Railway, etc.)
-2. `npm run build && npm run start`
-3. Ou use um serviço que rode o Express em produção apontando para o Neon
+1. Configure no painel da Vercel:
+   - `DATABASE_URL`
+   - `ADMIN_PASSWORD`
+   - `JWT_SECRET`
+   - *(opcional remover `PORT` — não é usado em serverless)*
+
+2. Faça push para o repositório — a Vercel detecta Vite + as funções em `/api`.
+
+3. A API roda como **serverless function** (`api/index.ts`), não como servidor Express separado.
+
+4. Após o deploy, teste: `https://seu-dominio.vercel.app/api/health` → deve retornar `{"ok":true}`.
+
+```bash
+npm run build && npm run start   # produção local (Express + dist)
+```
 
 ## Stack
 

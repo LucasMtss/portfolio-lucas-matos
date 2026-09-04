@@ -31,9 +31,11 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
 }
 
 export function setAuthCookie(res: Response, token: string) {
+  const isSecure =
+    process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL)
   res.cookie(COOKIE_NAME, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: isSecure,
     sameSite: 'lax',
     maxAge: 7 * 24 * 60 * 60 * 1000,
     path: '/',
